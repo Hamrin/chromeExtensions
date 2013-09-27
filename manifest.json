@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+
+  "name": "Videoplaza Adplayer Logger",
+  "description": "Some text",
+  "version": "0.1",
+	
+  "content_scripts": [
+    {
+      "matches": ["http://*/*"],
+      "js": ["adPlayerErrors.js"],
+	  "run_at": "document_end",
+	  "all_frames": true
+    }
+  ],
+
+  "permissions": [
+    "tabs"
+  ],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  }
+}
