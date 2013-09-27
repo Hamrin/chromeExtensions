@@ -4,18 +4,25 @@
   "name": "Videoplaza Adplayer Logger",
   "description": "Some text",
   "version": "0.1",
-	
+  "background": {
+	"scripts":["background.js"]
+  },
+
   "content_scripts": [
     {
       "matches": ["http://*/*"],
-      "js": ["adPlayerErrors.js"],
+      "js": ["contentScript.js"],
 	  "run_at": "document_end",
 	  "all_frames": true
     }
   ],
+  
+  "web_accessible_resources" : [
+    "adPlayerErrors.js"
+  ],
 
   "permissions": [
-    "tabs"
+    "tabs","background","http://*/"
   ],
   "browser_action": {
     "default_icon": "icon.png",

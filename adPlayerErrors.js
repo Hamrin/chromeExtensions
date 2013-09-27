@@ -20,8 +20,9 @@
 		},
 		
 		errorEventHandler : function( e ) {
-			printAdPlayerEvent(e);
-			console.log("Received error: " + e);
+			hej.trigger(JSON.stringify(e),function(response){
+				//Callback for when content script returns event.
+			});
 		},
 		
 		addEventHandlers : function() {
@@ -32,15 +33,29 @@
 		
 		startChecking:function() {
 			hej.supportTimerId = setInterval(hej.checkStatus, 100);
-			console.log("Start looking for vpsupport");
 		},
 
 		stopChecking:function(){
+			//Didn't find VpSupport!
 			clearInterval(hej.supportTimerId);
-			console.log("Found vpsupport, stop looking");
 	        hej.addEventHandlers();
 		},
 		
+		trigger:function(data, f_callback) {
+		        var d = document.createElement("textarea"),
+		            e = document.createEvent("Events");
+		        d.style.cssText = "display:none;";
+		        d.value = data == null ? "" : data;
+		        d.addEventListener("action", function() {
+		            f_callback && f_callback(d.value);
+		            d.parentNode.removeChild(d);
+		        }, true)
+		        document.body.appendChild(d);
+
+		        // Fire events, to notify the Content script
+		        e.initEvent("onAdplayerError", false, true);
+		        d.dispatchEvent(e);
+		    }
 		
 	};
 	
