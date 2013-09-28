@@ -2,25 +2,101 @@
 <html>
   <head>
     <title>Getting Started Extension's Popup</title>
+	<script type="text/javascript" src="libs/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="popup.js"></script>
     <style>
-	      body {
-	        min-width: 357px;
-	        overflow-x: hidden;
-	      }
-		
-	      img {
-	        margin: 5px;
-	        border: 2px solid black;
-	        vertical-align: middle;
-	        width: 75px;
-	        height: 75px;
+		body {
+        	min-width: 357px;
+        	overflow-x: hidden;
+      	}
+	
+	      /* Clean up the lists styles */
+		ul.accordion {
+		    list-style: none;
+		    margin: 0;
+		    padding: 0;
+		}
+
+		/* Hide the radio buttons */
+		/* These are what allow us to toggle content panes */
+		ul.accordion label + input[type='radio'] {
+		    display: none;
+		}
+
+		/* Give each content pane some styles */
+		ul.accordion li {
+		    background-color: #CCCCCC;
+		    border-bottom: 1px solid #DDDDDD;
+		}
+
+		/* Make the main tab look more clickable */
+		ul.accordion label {
+		    background-color: #666666;
+		    color: #FFFFFF;
+		    display: block;
+		    padding: 10px;
+		}
+
+		ul.accordion label:hover {
+		    cursor: pointer;
+		}
+
+		/* Set up the div that will show and hide */
+		ul.accordion div.content {
+		    overflow: hidden;
+		    padding: 0 10px;
+		    display: none;
+		}
+
+		/* Show the content boxes when the radio buttons are checked */
+		ul.accordion label + input[type='radio']:checked + div.content {
+		    display: block;
+		}
 	      }
 	    </style>
-	<script src="popup.js"></script>
   </head>
   <body>
-	<div id="content">
-	</div>
+	<ul class='accordion' id="list">
+	    <li>
+	        <label for='cp-1'>Content pane 1</label>
+	        <input type='radio' name='a' id='cp-1' checked='checked'>
+	        <div class='content' id='item1'>
+	            <p>Description</p>
+	        </div>
+	    </li>
+
+	    <li>
+	        <label for='cp-2'>Content pane 2</label>
+	        <input type='radio' name='a' id='cp-2'>
+	        <div class='content'>
+	            <p>Description</p>
+	        </div>
+	    </li>
+
+	    <li>
+	        <label for='cp-3'>Content pane 3</label>
+	        <input type='radio' name='a' id='cp-3'>
+	        <div class='content'>
+	            <p>Description</p>
+	        </div>
+	    </li>
+
+	    <li>
+	        <label for='cp-4'>Content pane 4</label>
+	        <input type='radio' name='a' id='cp-4'>
+	        <div class='content'>
+	            <p>Description</p>
+	        </div>
+	    </li>
+
+	    <li>
+	        <label for='cp-5'>Content pane 5</label>
+	        <input type='radio' name='a' id='cp-5'>
+	        <div class='content'>
+	            <p>Description</p>
+	        </div>
+	    </li>
+	</ul>
   </body>
 </html>
 

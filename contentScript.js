@@ -20,7 +20,7 @@ function injectJs(link) {
 				from.value = "This is the response.";
 				from.dispatchEvent(o_event);
 				//Send to background:
-				chrome.runtime.sendMessage({message:"errorEvent", data: data});
+				chrome.runtime.sendMessage({'method':'errorEvent', 'data': data});
 				
 				// if(data.type == "sessionErrorEvent"){
 				// 					console.log("Session Error: " + data.detailedMessage);
