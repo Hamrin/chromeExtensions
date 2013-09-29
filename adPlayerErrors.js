@@ -9,12 +9,13 @@
 		checkStatus:function(){
 	        hej.i++;
 
-	        if(hej.i > 100){
-	            console.log("No vpsupport available.");
+	        if(hej.i > 50){
+	            console.log("WARNING: No VpSupport found.");
 				clearInterval(hej.supportTimerId);
 	        }
 
 			if(window.videoplaza_js_support !== undefined){
+				console.log("VpSupport found.");
 	            hej.stopChecking();
 			}
 		},
